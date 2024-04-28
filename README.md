@@ -16,7 +16,9 @@ It provides:
 ## Modes
 
 - Guessers/scoreboard mode
+  - where the game and score are managed
 - Drawer mode
+  - where the difficulty selection and time is managed
 - Spectator mode
 
 ## Offline multiple device support... How?
