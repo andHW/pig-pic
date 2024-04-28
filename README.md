@@ -2,16 +2,16 @@
 
 <!-- Project name to be refined... -->
 
-A offline web app for offline pictionary, where the drawing is done outside the app.
+An offline web app for offline pictionary, where the drawing is done outside the app.
 
-It offers:
+It provides:
 
-- word generation based on difficulty
-- word selection
-- answer reveal
-- score keeping
-- time keeping
-- turn management
+- Word generation based on difficulty
+- Word selection
+- Answer reveal
+- Scorekeeping
+- Timekeeping
+- Turn management
 
 ## Modes
 
@@ -21,8 +21,8 @@ It offers:
 
 ## Offline multiple device support... How?
 
-Note that the app is designed to be static and offline, so it can be hosted on GitHub entirely for free.
+The app is designed to be static and offline, making it deployable on GitHub without cost.
 
-To have this app running on mutliple devices, while having the app as a "offline" (no further network communication) app, **a random seed is needed to be shared among the devices** to ensure that the same words are generated.
+To enable usage across multiple devices while maintaining the app's offline nature (no further network communication), **a shared random seed is required to ensure consistent word generation**. This necessitates the utilization of tools like seedrandom.js.
 
-I think `Math.random()` should be enough for this purpose, but I'm not sure. We'll see.
+While having a server to oversee the game could deter cheating to some extent and facilitate game synchronization across devices, such functionalities are not the primary focus of this project.
