@@ -1,4 +1,4 @@
-# Pig Pictionary (pig-pic)
+# 🐷 Pig Pictionary (pig-pic)
 
 <!-- Project name to be refined... -->
 
