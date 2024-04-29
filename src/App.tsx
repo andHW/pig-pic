@@ -21,7 +21,10 @@ export default function App() {
 
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
-      <AppBar position="fixed">
+      <AppBar
+        position="fixed"
+        sx={{ background: 'linear-gradient(45deg, #FE6B8B 20%, #FF8E53 30%, #FFED78 90%)', }}
+      >
         <Toolbar>
           <Box width="100%">
             <Typography
