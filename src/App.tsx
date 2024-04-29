@@ -14,7 +14,7 @@ export default function App() {
       case routes.game:
         return '👾';
       default:
-        return '';
+        return '🐛';
     }
   };
 

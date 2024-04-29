@@ -9,6 +9,7 @@ import Home from './pages/Home.tsx';
 import Game from './pages/Guesser.tsx';
 import * as routes from './routes.ts';
 import { createTheme, ThemeProvider } from '@mui/material';
+import NotFound from './pages/NotFound.tsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: routes.game,
         element: <Game />,
       },
+      {
+        path: '*',
+        element: <NotFound />,
+      }
     ],
   }
 ]);
