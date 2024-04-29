@@ -9,22 +9,18 @@ type WordsContextType = {
   [key in Difficulty]: string[];
 };
 
-export const WordsContext = createContext<WordsContextType>({
-  [Difficulty.Easy]: [],
-  [Difficulty.Medium]: [],
-  [Difficulty.Hard]: [],
-  [Difficulty.VeryHard]: []
-});
+function createEmptyWordsContext() {
+  return Object.values(Difficulty).reduce((acc, cur) => {
+    acc[cur] = [];
+    return acc;
+  }, {} as Record<Difficulty, string[]>);
+}
+
+export const WordsContext = createContext<WordsContextType>(createEmptyWordsContext());
 
 export default function WordsProvider( { children }: { children: React.ReactNode } ) {
-  const [wordsContents, setWordsContents] = useState<WordsContextType>(
-    {
-      [Difficulty.Easy]: [],
-      [Difficulty.Medium]: [],
-      [Difficulty.Hard]: [],
-      [Difficulty.VeryHard]: []
-    }
-  );
+  const [wordsContents, setWordsContents] =
+  useState<WordsContextType>(createEmptyWordsContext());
 
   useEffect(() => {
     const loadFiles = async () => {
@@ -36,12 +32,7 @@ export default function WordsProvider( { children }: { children: React.ReactNode
       ];
       const promises = files.map(file => fetch(file.path).then(response => response.text()));
       const contents = await Promise.all(promises);
-      const wordsContents: WordsContextType = {
-        [Difficulty.Easy]: [],
-        [Difficulty.Medium]: [],
-        [Difficulty.Hard]: [],
-        [Difficulty.VeryHard]: []
-      };
+      const wordsContents: WordsContextType = createEmptyWordsContext();
       contents.forEach((content, index) => {
         wordsContents[files[index].difficulty] = content.split('\n');
       });
