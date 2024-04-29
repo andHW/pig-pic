@@ -19,16 +19,26 @@ function Home() {
             </Typography>
 
             <Stack spacing={2} direction="row">
-                <Button variant="contained">
-                    <Link to={routes.game} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link
+                    to={routes.game}
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                >
+                    <Button
+                        variant="contained"
+                        startIcon={<Typography variant="h6">👾</Typography>}
+                    >
                         Game
-                    </Link>
-                </Button>
-                <Button variant="contained">
-                    <Link to={routes.drawer} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    </Button>
+                </Link>
+                <Link to={routes.drawer} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Button
+                        variant="contained"
+                        startIcon={<Typography variant="h6">🎨</Typography>}
+                    >
+
                         Drawer
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
             </Stack>
         </Box >
     );
