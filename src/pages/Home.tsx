@@ -2,7 +2,32 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import * as routes from '../routes';
 
+interface HomeBigButtonProps {
+    route: string;
+    icon: string;
+    label: string;
+}
+
+const HomeBigButton: React.FC<HomeBigButtonProps> = ({ route, icon, label }) => {
+    const buttonFontSize = 25;
+    const buttonIconFontSize = 30;
+
+    return (
+        <Link to={route} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Button
+                variant="contained"
+                size="large"
+                startIcon={<Typography style={{ fontSize: buttonIconFontSize }}>{icon}</Typography>}
+                sx={{ fontSize: buttonFontSize }}
+            >
+                {label}
+            </Button>
+        </Link>
+    );
+};
+
 function Home() {
+
     return (
         <Box
             display="flex"
@@ -19,26 +44,8 @@ function Home() {
             </Typography>
 
             <Stack spacing={2} direction="row">
-                <Link
-                    to={routes.game}
-                    style={{ textDecoration: 'none', color: 'inherit' }}
-                >
-                    <Button
-                        variant="contained"
-                        startIcon={<Typography variant="h6">👾</Typography>}
-                    >
-                        Game
-                    </Button>
-                </Link>
-                <Link to={routes.drawer} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <Button
-                        variant="contained"
-                        startIcon={<Typography variant="h6">🎨</Typography>}
-                    >
-
-                        Drawer
-                    </Button>
-                </Link>
+                <HomeBigButton route={routes.game} icon="👾" label="Game" />
+                <HomeBigButton route={routes.drawer} icon="🎨" label="Drawer" />
             </Stack>
         </Box >
     );
