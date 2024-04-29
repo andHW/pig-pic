@@ -35,3 +35,7 @@ This necessitates the utilization of tools like [`seedrandom.js`](https://www.np
 While having a server to oversee the game could deter cheating to some extent;
 and facilitate game synchronization across devices,
 such functionalities are not the primary focus of this project.
+
+## Credits
+
+The word lists are fetched from <https://randomwordgenerator.com/pictionary.php>.
