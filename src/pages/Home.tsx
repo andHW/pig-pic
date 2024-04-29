@@ -18,7 +18,7 @@ const HomeBigButton: React.FC<HomeBigButtonProps> = ({ route, icon, label }) => 
                 variant="contained"
                 size="large"
                 startIcon={<Typography style={{ fontSize: buttonIconFontSize }}>{icon}</Typography>}
-                sx={{ fontSize: buttonFontSize }}
+                sx={{ fontSize: buttonFontSize, whiteSpace: 'nowrap' }}
             >
                 {label}
             </Button>
@@ -27,7 +27,6 @@ const HomeBigButton: React.FC<HomeBigButtonProps> = ({ route, icon, label }) => 
 };
 
 function Home() {
-
     return (
         <Box
             display="flex"
