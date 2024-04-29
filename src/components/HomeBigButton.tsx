@@ -13,19 +13,25 @@ const buttonIconFontSize = 30;
 
 const StyledLink = styled(Link)({
   textDecoration: 'none',
-  color: 'inherit'
+  color: 'inherit',
+  width: '100%',
 });
 
 const StyledButton = styled(Button)({
   fontSize: buttonFontSize,
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
 });
 
 const HomeBigButton: React.FC<HomeBigButtonProps> = ({ route, icon, label }) => {
   return (
     <StyledLink to={route}>
       <StyledButton
-        startIcon={<Typography style={{ fontSize: buttonIconFontSize }}>{icon}</Typography>}>
+        fullWidth
+        startIcon={
+          <Typography style={{ fontSize: buttonIconFontSize }}>
+            {icon}
+          </Typography>}
+      >
         {label}
       </StyledButton>
     </StyledLink>

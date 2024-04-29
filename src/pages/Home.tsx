@@ -21,7 +21,7 @@ const buttonProps = {
 function Home() {
   return (
     <StyledBox>
-      <Stack spacing={2} direction="row">
+      <Stack spacing={2} direction="column" alignContent="center" alignItems="center">
         {Object.entries(buttonProps).map(([route, { icon, label }]) => (
           <HomeBigButton key={route} route={route} icon={icon} label={label} />
         ))}

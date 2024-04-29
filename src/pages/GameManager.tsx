@@ -31,7 +31,7 @@ function GameManager() {
 
   return (
     <StyledBox>
-      <Stack spacing={2} alignItems="center" width={500}>
+      <Stack spacing={2} alignItems="center" width="100%" maxWidth={500}>
         <Avatar sx={{ bgcolor: 'secondary.main' }}>
           <Settings/>
         </Avatar>
@@ -41,7 +41,8 @@ function GameManager() {
         />
         <TextField
           onChange={(e) => handleNameInputChange(e.target.value)}
-          label="Enter player names, separated by semi-colons"
+          label="Names"
+          placeholder="separated by semicolon. e.g. Alice; Bob; Charlie; ..."
           variant="outlined"
           fullWidth
           required
