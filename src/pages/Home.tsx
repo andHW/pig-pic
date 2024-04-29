@@ -39,13 +39,9 @@ function Home() {
             flexDirection="column"
             height={150}
         >
-            <Typography variant="h4">
-                Mode
-            </Typography>
-
             <Stack spacing={2} direction="row">
-                <HomeBigButton route={routes.game} icon="👾" label="Game" />
-                <HomeBigButton route={routes.drawer} icon="🎨" label="Drawer" />
+                <HomeBigButton route={routes.game} icon="👾" label="Game Mode" />
+                <HomeBigButton route={routes.drawer} icon="🎨" label="Drawer Mode" />
             </Stack>
         </Box >
     );
