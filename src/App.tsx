@@ -1,8 +1,9 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import * as routes from './routes.ts';
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Toolbar, Typography, useTheme } from '@mui/material';
 
 export default function App() {
+  const theme = useTheme();
   const location = useLocation();
 
   const getPageName = () => {
@@ -23,7 +24,10 @@ export default function App() {
       <AppBar position="fixed">
         <Toolbar>
           <Box width="100%">
-            <Typography variant="h4" component="div" noWrap>
+            <Typography
+              variant="h4" component="div" noWrap
+              sx={{ 'color': theme.palette.common.white }}
+            >
               <Link to={routes.home} style={{ textDecoration: 'none', color: 'inherit' }}>
                 🐷 Pictionary
               </Link>

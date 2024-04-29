@@ -3,13 +3,18 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
+
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import * as routes from './routes.ts';
+
 import Drawer from "./pages/Drawer.tsx";
 import Home from './pages/Home.tsx';
 import Game from './pages/Guesser.tsx';
-import * as routes from './routes.ts';
-import { createTheme, ThemeProvider } from '@mui/material';
 import NotFound from './pages/NotFound.tsx';
+
+import { createTheme, ThemeProvider } from '@mui/material';
+import { themeOptions } from './ThemeOptions.tsx';
 
 const router = createBrowserRouter([
   {
@@ -36,8 +41,7 @@ const router = createBrowserRouter([
   }
 ]);
 
-const theme = createTheme({
-});
+const theme = createTheme(themeOptions);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
