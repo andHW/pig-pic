@@ -1,49 +1,33 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Stack, styled } from "@mui/material";
 import * as routes from '../routes';
+import HomeBigButton from '../components/HomeBigButton';
 
-interface HomeBigButtonProps {
-    route: string;
-    icon: string;
-    label: string;
-}
+const StyledBox = styled(Box)({
+  display: "flex",
+  justifySelf: "center",
+  alignSelf: "center",
+  justifyContent: "space-evenly",
+  alignItems: "center",
+  width: "100%",
+  flexDirection: "column",
+  height: 150,
+});
 
-const HomeBigButton: React.FC<HomeBigButtonProps> = ({ route, icon, label }) => {
-    const buttonFontSize = 25;
-    const buttonIconFontSize = 30;
-
-    return (
-        <Link to={route} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Button
-                variant="contained"
-                size="large"
-                startIcon={<Typography style={{ fontSize: buttonIconFontSize }}>{icon}</Typography>}
-                sx={{ fontSize: buttonFontSize, whiteSpace: 'nowrap' }}
-            >
-                {label}
-            </Button>
-        </Link>
-    );
+const buttonProps = {
+  [routes.game]: { icon: "👾", label: "Game Mode" },
+  [routes.drawer]: { icon: "🎨", label: "Drawer Mode" },
 };
 
 function Home() {
-    return (
-        <Box
-            display="flex"
-            justifySelf="center"
-            alignSelf="center"
-            justifyContent="space-evenly"
-            alignItems="center"
-            width="100%"
-            flexDirection="column"
-            height={150}
-        >
-            <Stack spacing={2} direction="row">
-                <HomeBigButton route={routes.game} icon="👾" label="Game Mode" />
-                <HomeBigButton route={routes.drawer} icon="🎨" label="Drawer Mode" />
-            </Stack>
-        </Box >
-    );
+  return (
+    <StyledBox>
+      <Stack spacing={2} direction="row">
+        {Object.entries(buttonProps).map(([route, { icon, label }]) => (
+          <HomeBigButton key={route} route={route} icon={icon} label={label} />
+        ))}
+      </Stack>
+    </StyledBox>
+  );
 }
 
 export default Home;
