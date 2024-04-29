@@ -3,14 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
-
-
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as routes from './routes.ts';
 
 import Drawer from "./pages/Drawer.tsx";
 import Home from './pages/Home.tsx';
-import Game from './pages/Guesser.tsx';
+import GameManager from './pages/GameManager.tsx';
 import NotFound from './pages/NotFound.tsx';
 
 import { createTheme, ThemeProvider } from '@mui/material';
@@ -31,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: routes.game,
-        element: <Game />,
+        element: <GameManager />,
       },
       {
         path: '*',
