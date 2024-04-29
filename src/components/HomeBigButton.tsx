@@ -12,12 +12,12 @@ const buttonFontSize = 25;
 const buttonIconFontSize = 30;
 
 const StyledLink = styled(Link)({
-  textDecoration: 'none', 
+  textDecoration: 'none',
   color: 'inherit'
 });
 
 const StyledButton = styled(Button)({
-  fontSize: buttonFontSize, 
+  fontSize: buttonFontSize,
   whiteSpace: 'nowrap'
 });
 

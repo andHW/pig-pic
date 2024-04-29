@@ -35,11 +35,11 @@ function Drawer() {
         <TextField
           fullWidth label="🎰 Seed" variant="outlined"
         />
-        <TextField 
+        <TextField
           fullWidth
-          label="⏳ Time Limit" 
-          variant="outlined" 
-          required 
+          label="⏳ Time Limit (seconds)"
+          variant="outlined"
+          required
           type="number"
           inputProps={{ min: MIN_TIME_LIMIT.toString(), max: MAX_TIME_LIMIT.toString() }}
           error={Boolean(timeLimitError)}

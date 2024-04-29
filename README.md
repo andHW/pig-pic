@@ -2,6 +2,8 @@
 
 <!-- Project name to be refined... -->
 
+**🚧 Work in progress.**
+
 Demo: [click here](https://andhw.github.io/pig-pic/).
 
 An offline web app for offline pictionary, where the drawing is done outside the app.

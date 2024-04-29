@@ -16,6 +16,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'indent': ['error', 2],
+    'no-trailing-spaces': 'error',
     'react/react-in-jsx-scope': 'off',
   },
   settings: {
