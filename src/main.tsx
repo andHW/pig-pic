@@ -6,13 +6,15 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as routes from './routes.ts';
 
-import Drawer from "./pages/Drawer.tsx";
 import Home from './pages/Home.tsx';
 import GameManager from './pages/GameManager.tsx';
+import Drawer from "./pages/Drawer.tsx";
+import Words from './pages/Words.tsx';
 import NotFound from './pages/NotFound.tsx';
 
-import { createTheme, ThemeProvider } from '@mui/material';
+import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material';
 import { themeOptions } from './ThemeOptions.tsx';
+import WordsProvider from './WordsProvider.tsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
         element: <GameManager />,
       },
       {
+        path: routes.words,
+        element: <Words />,
+      },
+      {
         path: '*',
         element: <NotFound />,
       }
@@ -39,12 +45,15 @@ const router = createBrowserRouter([
   }
 ]);
 
-const theme = createTheme(themeOptions);
+let theme = createTheme(themeOptions);
+theme = responsiveFontSizes(theme);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <WordsProvider>
+        <RouterProvider router={router} />
+      </WordsProvider>
     </ThemeProvider>
   </React.StrictMode>,
 )

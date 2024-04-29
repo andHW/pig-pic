@@ -16,6 +16,7 @@ const StyledBox = styled(Box)({
 const buttonProps = {
   [routes.game]: { icon: "👾", label: "Game Mode" },
   [routes.drawer]: { icon: "🎨", label: "Drawer Mode" },
+  [routes.words]: { icon: "📚", label: "Words Mode" },
 };
 
 function Home() {
