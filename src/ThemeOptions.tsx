@@ -10,10 +10,10 @@ export const themeOptions: ThemeOptions = {
       main: '#f9bb34',
     },
     success: {
-      main: '#8aff78',
+      main: '#43f835',
     },
     info: {
-      main: '#78ffed',
+      main: '#00edcc',
     },
   },
   components: {
