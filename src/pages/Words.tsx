@@ -3,6 +3,7 @@ import { useCallback, useMemo, useState } from "react";
 import styled from "@emotion/styled";
 import { Avatar, Box, Button, Stack, TextField, ToggleButton, ToggleButtonGroup, Typography, useMediaQuery, useTheme } from "@mui/material";
 import TranslateIcon from '@mui/icons-material/Translate';
+import CasinoIcon from '@mui/icons-material/Casino';
 
 import { useWordsContext } from "../useWordsContext";
 import { Difficulty } from "../Difficulty";
@@ -10,12 +11,10 @@ import { Difficulty } from "../Difficulty";
 const MAX_WORDS = 20;
 const MIN_WORDS = 1;
 const SMALL_SCREEN_HEIGHT = '32vh';
-const LARGE_SCREEN_HEIGHT = '64vh';
+const LARGE_SCREEN_HEIGHT = '56vh';
 const WIDTH = '85%';
 const SMALL_SCREEN_VARIANT = 'h5';
 const LARGE_SCREEN_VARIANT = 'h2';
-const SMALL_SCREEN_DIRECTION = 'column';
-const LARGE_SCREEN_DIRECTION = 'row';
 
 const WordsTypography =
   ({ isSmallScreen, words }: { isSmallScreen: boolean, words: string }) => (
@@ -40,9 +39,7 @@ const WordTextField =
     return (
       <TextField
         label="#words"
-        size="medium"
         fullWidth={isSmallScreen}
-        type="number"
         value={numWords}
         onChange={handleChange}
         inputProps={{ min: MIN_WORDS, max: MAX_WORDS }}
@@ -74,7 +71,9 @@ const DifficultyToggle: React.FC<DifficultyToggleProps> = ({ difficulty, setDiff
     <ToggleButtonGroup value={difficulty} color="primary">
       {
         difficultyValues.map((value) => (
-          <ToggleButton key={value} value={value} onClick={() => setDifficulty(value)}>
+          <ToggleButton
+            key={value} value={value} onClick={() => setDifficulty(value)}
+          >
             {value}
           </ToggleButton>
         ))
@@ -90,8 +89,8 @@ function Words() {
   const wordsContext = useWordsContext();
   const [words, setWords] = useState<string>('');
   const [difficulty, setDifficulty] = useState<Difficulty>(Difficulty.Easy);
-  const [numWords, setNumWords] = useState<string>('');
-  const numWordsInt = parseInt(numWords);
+  const [numWords, setNumWords] = useState<string>('1');
+  const numWordsInt = Math.min( MAX_WORDS, parseInt(numWords));
 
   const generateWord = useCallback(() => {
     const words = wordsContext[difficulty];
@@ -109,8 +108,14 @@ function Words() {
     setWords(words.join(', '));
   }, [numWordsInt, generateWord, setWords]);
 
+  const handleKeyPress = (event: { key: string; }) => {
+    if(event.key === 'Enter'){
+      generateWords();
+    }
+  }
+
   return (
-    <StyledBox>
+    <StyledBox onKeyUp={handleKeyPress}>
       <Stack spacing={2} alignItems="center" width={250}>
         <Avatar sx={{ bgcolor: 'secondary.main' }}>
           <TranslateIcon/>
@@ -120,11 +125,11 @@ function Words() {
       <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT, width: WIDTH ,display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <WordsTypography isSmallScreen={isSmallScreen} words={words} />
       </Box>
-      <Stack spacing={2} direction={isSmallScreen ? SMALL_SCREEN_DIRECTION : LARGE_SCREEN_DIRECTION} alignItems={'center'}>
+      <Stack spacing={1} direction={'column'}>
         <DifficultyToggle difficulty={difficulty} setDifficulty={setDifficulty} />
         <WordTextField isSmallScreen={isSmallScreen} numWords={numWords} setNumWords={setNumWords} numWordsInt={numWordsInt} />
-        <Button onClick={generateWords} fullWidth={isSmallScreen}>
-          Generate
+        <Button onClick={generateWords} startIcon={<CasinoIcon/>}>
+            Generate
         </Button>
       </Stack>
     </StyledBox>
