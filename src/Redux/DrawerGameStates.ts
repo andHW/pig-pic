@@ -12,14 +12,9 @@ interface DrawerGameState {
 }
 
 const initialState: DrawerGameState = {
-  // TODO: change this to oink oink
-  seed: 'DEVDEBUGDEBUG',
-
-  //TODO: change this to 45
-  timeLimit: 1,
-
-  // TODO: change this to DrawerGameStage.CONFIG
-  gameStage: DrawerGameStage.SELECT_WORD,
+  seed: 'oink oink',
+  timeLimit: 45,
+  gameStage: DrawerGameStage.CONFIG,
 };
 
 // Create a slice of the Redux store
