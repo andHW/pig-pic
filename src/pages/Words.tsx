@@ -5,8 +5,8 @@ import { Avatar, Box, Button, Stack, TextField, ToggleButton, ToggleButtonGroup,
 import TranslateIcon from '@mui/icons-material/Translate';
 import CasinoIcon from '@mui/icons-material/Casino';
 
-import { useWordsContext } from "../useWordsContext";
-import { Difficulty } from "../Difficulty";
+import { useWordsContext } from "../words/useWordsContext";
+import { Difficulty } from "../words/Difficulty";
 
 const MAX_WORDS = 20;
 const MIN_WORDS = 1;

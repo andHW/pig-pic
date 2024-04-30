@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
-import easyWords from './assets/words/easy.txt';
-import mediumWords from './assets/words/medium.txt';
-import hardWords from './assets/words/hard.txt';
-import veryHardWords from './assets/words/very-hard.txt';
+import easyWords from '/src/assets/words/easy.txt'
+import mediumWords from '/src/assets/words/medium.txt';
+import hardWords from '/src/assets/words/hard.txt';
+import veryHardWords from '/src/assets/words/very-hard.txt';
 import { Difficulty } from './Difficulty';
 
 type WordsContextType = {

@@ -14,7 +14,7 @@ import NotFound from './pages/NotFound.tsx';
 
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material';
 import { themeOptions } from './ThemeOptions.tsx';
-import WordsProvider from './WordsProvider.tsx';
+import WordsProvider from './words/WordsProvider.tsx';
 
 const router = createBrowserRouter([
   {
