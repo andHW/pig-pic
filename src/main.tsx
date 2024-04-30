@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
+import { Provider } from 'react-redux'
+import store from './Redux/store.ts'
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import * as routes from './routes.ts';
 
 import Home from './pages/Home.tsx';
 import GameManager from './pages/GameManager.tsx';
-import Drawer from "./pages/Drawer.tsx";
+import Drawer from "./pages/drawer/Drawer.tsx";
 import Words from './pages/Words.tsx';
 import NotFound from './pages/NotFound.tsx';
 
@@ -52,7 +55,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <WordsProvider>
-        <RouterProvider router={router} />
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
       </WordsProvider>
     </ThemeProvider>
   </React.StrictMode>,

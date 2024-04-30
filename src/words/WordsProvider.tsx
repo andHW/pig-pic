@@ -34,7 +34,7 @@ export default function WordsProvider( { children }: { children: React.ReactNode
       const contents = await Promise.all(promises);
       const wordsContents: WordsContextType = createEmptyWordsContext();
       contents.forEach((content, index) => {
-        wordsContents[files[index].difficulty] = content.split('\n');
+        wordsContents[files[index].difficulty] = content.split('\n').map(word => word.trim()).filter(word => word.length > 0);
       });
       setWordsContents(wordsContents);
     };
