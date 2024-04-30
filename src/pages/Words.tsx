@@ -90,7 +90,7 @@ function Words() {
   const [words, setWords] = useState<string>('');
   const [difficulty, setDifficulty] = useState<Difficulty>(Difficulty.Easy);
   const [numWords, setNumWords] = useState<string>('1');
-  const numWordsInt = Math.min( MAX_WORDS, parseInt(numWords));
+  const numWordsInt = parseInt(numWords);
 
   const generateWord = useCallback(() => {
     const words = wordsContext[difficulty];
@@ -100,8 +100,9 @@ function Words() {
   }, [difficulty, wordsContext]);
 
   const generateWords = useCallback(() => {
+    const numOfWords = Math.min( MAX_WORDS, numWordsInt);
     const words = [];
-    for (let i = 0; i < numWordsInt; i++) {
+    for (let i = 0; i < numOfWords; i++) {
       const word = generateWord();
       words.push(word);
     }
