@@ -13,11 +13,19 @@ const StyledBox = styled(Box)({
   height: 150,
 });
 
-const buttonProps = {
-  [routes.game]: { icon: "👾", label: "Game Mode" },
-  [routes.drawer]: { icon: "🎨", label: "Drawer Mode" },
-  [routes.words]: { icon: "📚", label: "Words Mode" },
+type SpecificRoutes = typeof routes.game | typeof routes.drawer | typeof routes.words;
+
+const routeLabels: Record<SpecificRoutes, string> = {
+  [routes.game]: "Game Mode",
+  [routes.drawer]: "Drawer Mode",
+  [routes.words]: "Words Mode",
 };
+
+const buttonProps = Object.entries(routeLabels).reduce((props, [route, label]) => {
+  props[route as SpecificRoutes] =
+    { icon: routes.routesEmojiMap[route as SpecificRoutes], label };
+  return props;
+}, {} as Record<SpecificRoutes, { icon: string; label: string }>);
 
 function Home() {
   return (

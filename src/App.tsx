@@ -7,16 +7,7 @@ export default function App() {
   const location = useLocation();
 
   const getPageName = () => {
-    switch (location.pathname) {
-    case routes.home:
-      return '🏠';
-    case routes.drawer:
-      return '🎨';
-    case routes.game:
-      return '👾';
-    default:
-      return '🐛';
-    }
+    return routes.routesEmojiMap[location.pathname as keyof typeof routes.routesEmojiMap] || '🐛';
   };
 
   return (
