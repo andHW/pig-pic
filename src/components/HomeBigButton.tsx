@@ -8,9 +8,6 @@ interface HomeBigButtonProps {
     label: string;
 }
 
-const buttonFontSize = 25;
-const buttonIconFontSize = 30;
-
 const StyledLink = styled(Link)({
   textDecoration: 'none',
   color: 'inherit',
@@ -18,7 +15,6 @@ const StyledLink = styled(Link)({
 });
 
 const StyledButton = styled(Button)({
-  fontSize: buttonFontSize,
   whiteSpace: 'nowrap',
 });
 
@@ -28,7 +24,7 @@ const HomeBigButton: React.FC<HomeBigButtonProps> = ({ route, icon, label }) => 
       <StyledButton
         fullWidth
         startIcon={
-          <Typography style={{ fontSize: buttonIconFontSize }}>
+          <Typography variant="h1">
             {icon}
           </Typography>}
       >
