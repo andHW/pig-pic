@@ -38,16 +38,5 @@ export const themeOptions: ThemeOptions = {
         },
       },
     },
-
-    MuiCssBaseline: {
-      '@global': {
-        body: {
-          backgroundImage: `
-            radial-gradient(circle at 10% 20%, rgba(255,176,187,0.1) 2%, transparent 0), // Changed color to match primary color
-            radial-gradient(circle at 90% 80%, rgba(249,187,52,0.1) 2%, transparent 0), // Changed color to match secondary color
-            linear-gradient(to right, #ffb0bb 0%, #f9bb34 100%)` // Changed colors to match primary and secondary colors
-        },
-      },
-    },
   },
 };
