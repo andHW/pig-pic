@@ -18,6 +18,7 @@ import NotFound from './pages/NotFound.tsx';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material';
 import { themeOptions } from './ThemeOptions.tsx';
 import WordsProvider from './words/WordsProvider.tsx';
+import SandBox from './pages/SandBox.tsx'
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: routes.words,
         element: <Words />,
+      },
+      {
+        path: routes.sandbox,
+        element: <SandBox />,
       },
       {
         path: '*',

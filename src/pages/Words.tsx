@@ -7,6 +7,7 @@ import CasinoIcon from '@mui/icons-material/Casino';
 
 import { useWordsContext } from "../words/useWordsContext";
 import { Difficulty } from "../words/Difficulty";
+import SandBox from "./SandBox";
 
 const MAX_WORDS = 20;
 const MIN_WORDS = 1;
@@ -93,13 +94,7 @@ function Words() {
   }
 
   return (
-    <StyledBox onKeyUp={handleKeyPress}>
-      <Stack spacing={2} alignItems="center" width={250}>
-        <Avatar sx={{ bgcolor: 'secondary.main' }}>
-          <TranslateIcon/>
-        </Avatar>
-        <Typography variant="h4">Words</Typography>
-      </Stack>
+    <SandBox onKeyUp={handleKeyPress} icon={<TranslateIcon/>} title="Words" >
       <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT,
         width: WIDTH ,display: 'flex', justifyContent: 'center', alignItems: 'center'}}
       >
@@ -124,7 +119,7 @@ function Words() {
             Generate
         </Button>
       </Stack>
-    </StyledBox>
+    </SandBox>
   );
 }
 
