@@ -1,4 +1,4 @@
-const tape = '/src/assets/tape.png';
+import tape from '/src/assets/tape.png';
 
 export const TapeImg = (): JSX.Element => (
   <img src={tape} height='64px'
