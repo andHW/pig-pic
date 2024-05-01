@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 
-import { Box, Button, Chip, Stack, TextField, ToggleButton, ToggleButtonGroup, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Chip, Paper, Stack, TextField, ToggleButton, ToggleButtonGroup, useMediaQuery, useTheme } from "@mui/material";
 import TranslateIcon from '@mui/icons-material/Translate';
 import CasinoIcon from '@mui/icons-material/Casino';
 
@@ -101,13 +101,15 @@ function Words() {
           ))}
         </Stack>
       </Box>
-      <Stack spacing={1} direction={'column'}>
-        <DifficultyToggle difficulty={difficulty} setDifficulty={setDifficulty} />
-        <WordTextField isSmallScreen={isSmallScreen} numWords={numWords} setNumWords={setNumWords} numWordsInt={numWordsInt} />
-        <Button onClick={generateWords} startIcon={<CasinoIcon/>}>
+      <Paper elevation={2} sx={{padding: 2, paddingTop: 3}}>
+        <Stack spacing={1} direction={'column'}>
+          <DifficultyToggle difficulty={difficulty} setDifficulty={setDifficulty} />
+          <WordTextField isSmallScreen={isSmallScreen} numWords={numWords} setNumWords={setNumWords} numWordsInt={numWordsInt} />
+          <Button onClick={generateWords} startIcon={<CasinoIcon/>}>
             Generate
-        </Button>
-      </Stack>
+          </Button>
+        </Stack>
+      </Paper>
     </SandBox>
   );
 }
