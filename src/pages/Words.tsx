@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 
 import styled from "@emotion/styled";
-import { Avatar, Box, Button, Stack, TextField, ToggleButton, ToggleButtonGroup, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Avatar, Box, Button, Chip, Stack, TextField, ToggleButton, ToggleButtonGroup, Typography, useMediaQuery, useTheme } from "@mui/material";
 import TranslateIcon from '@mui/icons-material/Translate';
 import CasinoIcon from '@mui/icons-material/Casino';
 
@@ -13,18 +13,6 @@ const MIN_WORDS = 1;
 const SMALL_SCREEN_HEIGHT = '32vh';
 const LARGE_SCREEN_HEIGHT = '56vh';
 const WIDTH = '85%';
-const SMALL_SCREEN_VARIANT = 'h5';
-const LARGE_SCREEN_VARIANT = 'h2';
-
-const WordsTypography =
-  ({ isSmallScreen, words }: { isSmallScreen: boolean, words: string }) => (
-    <Typography
-      variant={isSmallScreen ? SMALL_SCREEN_VARIANT : LARGE_SCREEN_VARIANT}
-      sx={{ textAlign: 'center' }}
-    >
-      { words ? words : '...'}
-    </Typography>
-  );
 
 const WordTextField =
   ({ isSmallScreen, numWords, setNumWords, numWordsInt }:
@@ -87,7 +75,7 @@ function Words() {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const wordsContext = useWordsContext();
-  const [words, setWords] = useState<string>('');
+  const [words, setWords] = useState<string[]>([]);
   const [difficulty, setDifficulty] = useState<Difficulty>(Difficulty.Easy);
   const [numWords, setNumWords] = useState<string>('1');
   const numWordsInt = parseInt(numWords);
@@ -102,11 +90,17 @@ function Words() {
   const generateWords = useCallback(() => {
     const numOfWords = Math.min( MAX_WORDS, numWordsInt);
     const words = [];
+    const wordSet = new Set<string>();
     for (let i = 0; i < numOfWords; i++) {
       const word = generateWord();
+      if (wordSet.has(word)) {
+        i--;
+        continue;
+      }
       words.push(word);
+      wordSet.add(word);
     }
-    setWords(words.join(', '));
+    setWords(words);
   }, [numWordsInt, generateWord, setWords]);
 
   const handleKeyPress = (event: { key: string; }) => {
@@ -123,8 +117,22 @@ function Words() {
         </Avatar>
         <Typography variant="h4">Words</Typography>
       </Stack>
-      <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT, width: WIDTH ,display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        <WordsTypography isSmallScreen={isSmallScreen} words={words} />
+      <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT,
+        width: WIDTH ,display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+      >
+        <Stack direction={'row'} spacing={1} rowGap={1}
+          sx={{flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}
+        >
+          {words.map((word, index) => (
+            <Chip label={word} key={index} color='secondary'
+              sx={
+                isSmallScreen
+                  ? { height: '1.2rem', fontSize: '1rem' }
+                  : { height: '3rem', fontSize: '2.5rem' }
+              }
+            />
+          ))}
+        </Stack>
       </Box>
       <Stack spacing={1} direction={'column'}>
         <DifficultyToggle difficulty={difficulty} setDifficulty={setDifficulty} />
