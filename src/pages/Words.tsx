@@ -72,7 +72,7 @@ const DifficultyToggle: React.FC<DifficultyToggleProps> = ({ difficulty, setDiff
 
 function Words() {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const wordsContext = useWordsContext();
   const [words, setWords] = useState<string[]>([]);
@@ -103,7 +103,7 @@ function Words() {
       <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT,
         width: WIDTH ,display: 'flex', justifyContent: 'center', alignItems: 'center'}}
       >
-        <Stack direction={'row'} spacing={1} rowGap={1}
+        <Stack direction={'row'} spacing={2} rowGap={2}
           sx={{flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}
         >
           {words.map((word, index) => (
