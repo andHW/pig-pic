@@ -40,7 +40,7 @@ function SelectWord() {
     };
 
     difficulties.forEach(difficulty => {
-      const wordList = wordsContext[difficulty];
+      const wordList = wordsContext.wordsContents[difficulty];
       const randomIndex = Math.floor(rng() * wordList.length);
       words[difficulty] = wordList[randomIndex];
     });
