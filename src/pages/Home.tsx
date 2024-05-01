@@ -1,6 +1,7 @@
-import { Box, Stack, styled } from "@mui/material";
+import { Box, Paper, Stack, styled } from "@mui/material";
 import * as routes from '../routes';
 import HomeBigButton from '../components/HomeBigButton';
+import { TapeImg } from "../components/TapeImg";
 
 const StyledBox = styled(Box)({
   display: "flex",
@@ -30,11 +31,19 @@ const buttonProps = Object.entries(routeLabels).reduce((props, [route, label]) =
 function Home() {
   return (
     <StyledBox>
-      <Stack spacing={2} direction="column" alignContent="center" alignItems="center">
-        {Object.entries(buttonProps).map(([route, { icon, label }]) => (
-          <HomeBigButton key={route} route={route} icon={icon} label={label} />
-        ))}
-      </Stack>
+      <Box style={{position:'relative', top: '-24px', left:'-48px', transform: 'rotate(12deg)'}}>
+        <TapeImg/>
+      </Box>
+      <Box style={{position:'relative', top: '-36px', left:'-12px'}}>
+        <TapeImg/>
+      </Box>
+      <Paper elevation={2} sx={{padding: 2, paddingTop: 3}}>
+        <Stack spacing={2} direction="column" alignContent="center" alignItems="center">
+          {Object.entries(buttonProps).map(([route, { icon, label }]) => (
+            <HomeBigButton key={route} route={route} icon={icon} label={label} />
+          ))}
+        </Stack>
+      </Paper>
     </StyledBox>
   );
 }

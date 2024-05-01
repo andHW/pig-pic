@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 
-import styled from "@emotion/styled";
-import { Avatar, Box, Button, Chip, Stack, TextField, ToggleButton, ToggleButtonGroup, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Chip, Stack, TextField, ToggleButton, ToggleButtonGroup, useMediaQuery, useTheme } from "@mui/material";
 import TranslateIcon from '@mui/icons-material/Translate';
 import CasinoIcon from '@mui/icons-material/Casino';
 
@@ -37,16 +36,6 @@ const WordTextField =
       />
     );
   };
-
-const StyledBox = styled(Box)({
-  display: "flex",
-  justifySelf: "center",
-  alignSelf: "center",
-  justifyContent: "space-evenly",
-  alignItems: "center",
-  width: "100%",
-  flexDirection: "column",
-});
 
 type DifficultyToggleProps = {
   difficulty: Difficulty;
