@@ -80,28 +80,11 @@ function Words() {
   const [numWords, setNumWords] = useState<string>('1');
   const numWordsInt = parseInt(numWords);
 
-  const generateWord = useCallback(() => {
-    const words = wordsContext[difficulty];
-    const randomIndex = Math.floor(Math.random() * words.length);
-    const word = words[randomIndex];
-    return word;
-  }, [difficulty, wordsContext]);
-
-  const generateWords = useCallback(() => {
-    const numOfWords = Math.min( MAX_WORDS, numWordsInt);
-    const words = [];
-    const wordSet = new Set<string>();
-    for (let i = 0; i < numOfWords; i++) {
-      const word = generateWord();
-      if (wordSet.has(word)) {
-        i--;
-        continue;
-      }
-      words.push(word);
-      wordSet.add(word);
-    }
+  const generateWords = () => {
+    const words = wordsContext.genRandomWords(
+      Math.min(numWordsInt, MAX_WORDS), difficulty);
     setWords(words);
-  }, [numWordsInt, generateWord, setWords]);
+  }
 
   const handleKeyPress = (event: { key: string; }) => {
     if(event.key === 'Enter'){
