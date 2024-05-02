@@ -10,8 +10,8 @@ import SandBox from "./SandBox";
 
 const MAX_WORDS = 20;
 const MIN_WORDS = 1;
-const SMALL_SCREEN_HEIGHT = '32vh';
-const LARGE_SCREEN_HEIGHT = '56vh';
+const SMALL_SCREEN_HEIGHT = '38vh';
+const LARGE_SCREEN_HEIGHT = '50vh';
 const WIDTH = '85%';
 
 const WordTextField =
@@ -87,7 +87,7 @@ function Words() {
       <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT,
         width: WIDTH ,display: 'flex', justifyContent: 'center', alignItems: 'center'}}
       >
-        <Stack direction={'row'} spacing={2} rowGap={2}
+        <Stack direction={'row'} spacing={ isSmallScreen ? 1 : 2 } rowGap={ isSmallScreen ? 1 : 2 }
           sx={{flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}
         >
           {words.map((word, index) => (
