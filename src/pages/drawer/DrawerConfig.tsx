@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
-import { Stack, Avatar, Typography, TextField, Button, styled, Box } from '@mui/material';
+import { Stack, Avatar, Typography, TextField, Button, Paper } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
+import BrushIcon from '@mui/icons-material/Brush';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { DrawerGameStage } from '../../Redux/DrawerGameStates';
 import { setGameStage, setSeed as setRSeed, setTimeLimit as setRTimeLimit } from '../../Redux/DrawerGameStates';
 import { RootState } from '../../Redux/store';
-
-const StyledBox = styled(Box)({
-  display: "flex",
-  justifySelf: "center",
-  alignSelf: "center",
-  justifyContent: "space-evenly",
-  alignItems: "center",
-  width: "100%",
-  flexDirection: "column",
-});
+import SandBox from '../SandBox';
 
 interface ConfigsProps {
   minTimeLimit: number;
@@ -45,44 +37,46 @@ const DrawerConfig: React.FC<ConfigsProps> = ({minTimeLimit: MIN_TIME_LIMIT, max
   }
 
   return (
-    <StyledBox>
-      <Stack spacing={2} alignItems="center" width={250}>
-        <Avatar sx={{ bgcolor: 'secondary.main' }}>
-          <SettingsIcon/>
-        </Avatar>
-        <Typography variant="h4">Settings</Typography>
-        <TextField
-          fullWidth label="🎰 Seed" variant="outlined" required={true}
-          value={seed}
-          onChange={(event) => setSeed(event.target.value)}
-        />
-        <TextField
-          fullWidth
-          label="⏳ Time Limit (seconds)"
-          variant="outlined"
-          required
-          type="number"
-          inputProps={{ min: MIN_TIME_LIMIT.toString(), max: MAX_TIME_LIMIT.toString() }}
-          error={Boolean(timeLimitError)}
-          helperText={timeLimitError}
-          value={timeLimit}
-          onChange={(event) => {
-            const value = Number(event.target.value);
-            const error = validateTimeLimit(value);
-            setTimeLimitError(error);
-            if (!error) {
-              setTimeLimit(value);
-            }
-          }}
-        />
-        <Button
-          variant="contained" color="primary" fullWidth
-          onClick={handleGameStart}
-        >
+    <SandBox title='Drawer' icon={<BrushIcon/>}>
+      <Paper elevation={3} sx={{marginTop: 4, padding: 2 }}>
+        <Stack spacing={2} alignItems="center" width={250}>
+          <Avatar sx={{ bgcolor: 'secondary.main' }}>
+            <SettingsIcon/>
+          </Avatar>
+          <Typography variant="h4">Settings</Typography>
+          <TextField
+            fullWidth label="🎰 Seed" variant="outlined" required={true}
+            value={seed}
+            onChange={(event) => setSeed(event.target.value)}
+          />
+          <TextField
+            fullWidth
+            label="⏳ Time Limit (seconds)"
+            variant="outlined"
+            required
+            type="number"
+            inputProps={{ min: MIN_TIME_LIMIT.toString(), max: MAX_TIME_LIMIT.toString() }}
+            error={Boolean(timeLimitError)}
+            helperText={timeLimitError}
+            value={timeLimit}
+            onChange={(event) => {
+              const value = Number(event.target.value);
+              const error = validateTimeLimit(value);
+              setTimeLimitError(error);
+              if (!error) {
+                setTimeLimit(value);
+              }
+            }}
+          />
+          <Button
+            variant="contained" color="primary" fullWidth
+            onClick={handleGameStart}
+          >
         Game on!
-        </Button>
-      </Stack>
-    </StyledBox>
+          </Button>
+        </Stack>
+      </Paper>
+    </SandBox>
   );
 };
 

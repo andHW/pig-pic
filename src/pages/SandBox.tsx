@@ -13,6 +13,7 @@ type SandBoxProps = PropsWithChildren<{
 
 function SandBox({ title = defaultTitle, icon = defaultIcon, children, ...props }: SandBoxProps) {
   return(
+    //TODO: fix the tapes, make the position more responsive to different box size
     <Box sx={{ zIndex: 7853, display: 'flex', flexDirection: 'column', justifyItems:'center', alignItems:'center', width: '100%'}} {...props}>
       <Paper elevation={6} sx={{margin: 1, padding: 2, paddingLeft: 12, paddingRight: 12 }}>
         <Box style={{position:'relative', top: '-48px', left: '-96px'}}>
