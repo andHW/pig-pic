@@ -101,7 +101,7 @@ function Words() {
           ))}
         </Stack>
       </Box>
-      <Paper elevation={2} sx={{padding: 2, paddingTop: 3}}>
+      <Paper elevation={2} sx={{padding: 2}}>
         <Stack spacing={1} direction={'column'}>
           <DifficultyToggle difficulty={difficulty} setDifficulty={setDifficulty} />
           <WordTextField isSmallScreen={isSmallScreen} numWords={numWords} setNumWords={setNumWords} numWordsInt={numWordsInt} />
