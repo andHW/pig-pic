@@ -16,6 +16,7 @@ import { useEffect, useMemo, useState } from 'react';
 import seedrandom from 'seedrandom';
 import { Difficulty } from '../../words/Difficulty';
 import { useWordsContext } from '../../words/useWordsContext';
+import SandBox from '../SandBox';
 
 const SMALL_SCREEN_HEIGHT = '24vh';
 const LARGE_SCREEN_HEIGHT = '32vh';
@@ -75,22 +76,18 @@ function SelectWord() {
   }, [ready]);
 
   return (
-    <Stack spacing={2} alignItems="center">
-      <Stack spacing={2} alignItems="center" width={250}>
-        <Avatar sx={{ bgcolor: 'secondary.main' }}>
-          <MenuBookIcon/>
-        </Avatar>
-        <Typography variant="h4">Word Selection</Typography>
-      </Stack>
-
-      <Stack direction={"row"} alignItems={"center"} spacing={1}>
-        <Chip icon={<CasinoIcon/>} color="info"
-          label={drawerGameState.seed} />
-        <Chip icon={<HourglassEmptyIcon/>} color="info"
-          label={`${drawerGameState.timeLimit}s`}/>
-      </Stack>
-
-      {ready &&
+    <SandBox title='Draw!' icon={<MenuBookIcon/>}
+      inPaperChildren={
+        <Stack direction={"row"} alignItems={"center"} spacing={1}>
+          <Chip icon={<CasinoIcon/>} color="info"
+            label={drawerGameState.seed} />
+          <Chip icon={<HourglassEmptyIcon/>} color="info"
+            label={`${drawerGameState.timeLimit}s`}/>
+        </Stack>
+      }
+    >
+      <Stack spacing={2} alignItems="center">
+        {ready &&
             <Stack spacing={1} direction='row'>
               {
                 Object.entries(words).map(([difficulty, word]) => (
@@ -110,29 +107,30 @@ function SelectWord() {
                 ))
               }
             </Stack>
-      }
+        }
 
-      <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT}} justifyContent={'center'} alignItems={'center'} alignContent={'center'}>
-        {!ready &&
+        <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT}} justifyContent={'center'} alignItems={'center'} alignContent={'center'}>
+          {!ready &&
           <Button endIcon={<HourglassEmptyIcon/>} onClick={()=> { setReady(true); setWords(generateWords());}}>
             {"I'm ready!"}
           </Button>
-        }
-        {ready &&
+          }
+          {ready &&
           <Typography variant="h1" align='center' style={{letterSpacing: 0}}>{countdown}</Typography>
-        }
-      </Box>
+          }
+        </Box>
 
-      <Button onClick={()=> { setReady(false); setCountdown(drawerGameState.timeLimit); }} disabled={!ready}>
-        {"Next one!"}
-      </Button>
+        <Button onClick={()=> { setReady(false); setCountdown(drawerGameState.timeLimit); }} disabled={!ready}>
+          {"Next one!"}
+        </Button>
 
-      <Button
-        onClick={() => {dispatch(setGameStage(DrawerGameStage.CONFIG))}}
-      >
+        <Button
+          onClick={() => {dispatch(setGameStage(DrawerGameStage.CONFIG))}}
+        >
         End Game
-      </Button>
-    </Stack>
+        </Button>
+      </Stack>
+    </SandBox>
   );
 }
 

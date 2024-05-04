@@ -32,10 +32,10 @@ function Home() {
   return (
     <StyledBox>
       <Box style={{position:'relative', top: '-24px', left:'-48px', transform: 'rotate(12deg)'}}>
-        <TapeImg/>
+        <TapeImg style={{position: 'absolute'}}/>
       </Box>
       <Box style={{position:'relative', top: '-36px', left:'-12px'}}>
-        <TapeImg/>
+        <TapeImg style={{position: 'absolute'}}/>
       </Box>
       <Paper elevation={2} sx={{padding: 2, paddingTop: 3}}>
         <Stack spacing={2} direction="column" alignContent="center" alignItems="center">
