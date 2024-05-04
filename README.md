@@ -36,6 +36,8 @@ While having a server to oversee the game could deter cheating to some extent;
 and facilitate game synchronization across devices,
 such functionalities are not the primary focus of this project.
 
+Plus, it's great to have something that works offline.
+
 ## Credits
 
 The word lists are fetched from <https://randomwordgenerator.com/pictionary.php>.
