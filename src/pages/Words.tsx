@@ -85,7 +85,7 @@ function Words() {
   return (
     <SandBox onKeyUp={handleKeyPress} icon={<TranslateIcon/>} title="Words" >
       <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT,
-        width: WIDTH ,display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+        width: WIDTH ,display: 'flex', justifyContent: 'center', alignItems: 'flex-start'}}
       >
         <Stack direction={'row'} spacing={ isSmallScreen ? 1 : 2 } rowGap={ isSmallScreen ? 1 : 2 }
           sx={{flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}
@@ -101,7 +101,7 @@ function Words() {
           ))}
         </Stack>
       </Box>
-      <Paper elevation={2} sx={{padding: 2}}>
+      <Paper elevation={2} sx={{padding: 2, position: 'fixed', bottom: 12}}>
         <Stack spacing={1} direction={'column'}>
           <DifficultyToggle difficulty={difficulty} setDifficulty={setDifficulty} />
           <WordTextField isSmallScreen={isSmallScreen} numWords={numWords} setNumWords={setNumWords} numWordsInt={numWordsInt} />

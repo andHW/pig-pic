@@ -86,7 +86,7 @@ function SelectWord() {
         </Stack>
       }
     >
-      <Stack spacing={2} alignItems="center">
+      <Stack spacing={2} alignItems="center" display="flex">
         {ready &&
             <Stack spacing={1} direction='row'>
               {
@@ -109,7 +109,8 @@ function SelectWord() {
             </Stack>
         }
 
-        <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT}} justifyContent={'center'} alignItems={'center'} alignContent={'center'}>
+        <Box sx={{height: isSmallScreen ? SMALL_SCREEN_HEIGHT : LARGE_SCREEN_HEIGHT}}
+          justifyContent='center' alignItems='center' alignContent='center'>
           {!ready &&
           <Button endIcon={<HourglassEmptyIcon/>} onClick={()=> { setReady(true); setWords(generateWords());}}>
             {"I'm ready!"}
@@ -120,15 +121,17 @@ function SelectWord() {
           }
         </Box>
 
-        <Button onClick={()=> { setReady(false); setCountdown(drawerGameState.timeLimit); }} disabled={!ready}>
-          {"Next one!"}
-        </Button>
+        <Stack spacing={2} sx={{ position: 'fixed', bottom: 12}} direction="row">
+          <Button onClick={()=> { setReady(false); setCountdown(drawerGameState.timeLimit); }} disabled={!ready}>
+            {"Next one!"}
+          </Button>
 
-        <Button
-          onClick={() => {dispatch(setGameStage(DrawerGameStage.CONFIG))}}
-        >
+          <Button
+            onClick={() => {dispatch(setGameStage(DrawerGameStage.CONFIG))}}
+          >
         End Game
-        </Button>
+          </Button>
+        </Stack>
       </Stack>
     </SandBox>
   );

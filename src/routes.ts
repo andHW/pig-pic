@@ -12,5 +12,5 @@ export const routesEmojiMap: Record<Route, string> = {
   [drawer]: '🎨',
   [game]: '👾',
   [words]: '📚',
-  [sandbox]: '🏜️',
+  [sandbox]: '🧪',
 };

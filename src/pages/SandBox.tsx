@@ -5,6 +5,10 @@ import { TapeImg } from "../components/TapeImg";
 
 const defaultTitle = "SandBox";
 const defaultIcon = <ScienceIcon/>;
+const defaultChildren =
+  <Paper sx={{padding: 8}}>
+    <Typography variant="h6">Dust and ashes</Typography>
+  </Paper>;
 
 type SandBoxProps = PropsWithChildren<{
   title?: string;
@@ -12,15 +16,16 @@ type SandBoxProps = PropsWithChildren<{
   inPaperChildren?: React.ReactNode | undefined;
 }> & ComponentPropsWithoutRef<'div'>;
 
-function SandBox({ title = defaultTitle, icon = defaultIcon, inPaperChildren, children, ...props }: SandBoxProps) {
+function SandBox({ title = defaultTitle, icon = defaultIcon, inPaperChildren, children = defaultChildren, ...props }: SandBoxProps) {
   return(
-    //TODO: fix the tapes, make the position more responsive to different box size
     <Box sx={{ zIndex: 7853, display: 'flex', flexDirection: 'column', justifyItems:'center', alignItems:'center', width: '100%'}} {...props}>
       <Paper elevation={6}
-        sx={{margin: 1, padding: 2, paddingLeft: 12, paddingRight: 12,
+        sx={{
+          position: 'absolute',
+          margin: 1, padding: 2, paddingLeft: 8, paddingRight: 8,
           display:'flex', justifyContent: 'center', alignItems: 'center'}}
       >
-        <Box style={{position: 'absolute', display: 'flex', top: 32 }}>
+        <Box style={{position: 'absolute', display: 'flex', top: -32 }}>
           <TapeImg/>
           <TapeImg style={{ position: 'relative', right: '-70px', transform: 'rotate(90deg)' }}/>
           <TapeImg/>
@@ -33,7 +38,9 @@ function SandBox({ title = defaultTitle, icon = defaultIcon, inPaperChildren, ch
           {inPaperChildren}
         </Stack>
       </Paper>
-      {children}
+      <Box sx={{ display: 'flex', flexGrow: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        {children}
+      </Box>
     </Box>
   )
 }
