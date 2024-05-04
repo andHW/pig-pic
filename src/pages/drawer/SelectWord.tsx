@@ -4,7 +4,7 @@ import { RootState } from '../../Redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { DrawerGameStage, setGameStage } from '../../Redux/DrawerGameStates';
 
-import { Avatar, Box, Button, Card, CardContent, CardHeader, Chip, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Card, CardContent, CardHeader, Chip, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import CasinoIcon from '@mui/icons-material/Casino';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
